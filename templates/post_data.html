@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block html %}
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Post data</title>
+    </head>
+    <body>
+        <h1>Hello</h1>
+        <p>This is Tadas programing webpage!!!</p>
+        <form action="/post_data" method="post">
+            <input  name="data" type="text" size="30" placeholder="Data">
+            <button type="submit">Post data</button>
+        </form>
+    </body>
+{% endblock %}

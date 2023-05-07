@@ -7,7 +7,28 @@
 </head>
 <body>
     <h1>Posted data list</h1>
-    <p>The list of posted data</p>
-    <p>{{ data }}</p>
 </body>
+<table>
+    <thead>
+        <tr>
+            <th>Posted data</th>
+            <th>Result</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for data in posted_data_placeholder %}
+            <tr>
+                <td>{{ data.Posted_function }}</td>
+                <td>{{ data.Result }}</td>
+                <td>
+                    <form action="/posted_data" method="post">
+                        <input name="line_to_remove"
+                         type="hidden" value="{{ data.Posted_function }}">
+                        <input type="submit" value="Remove">
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

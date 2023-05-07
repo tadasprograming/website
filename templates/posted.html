@@ -1,0 +1,15 @@
+{% extends "layout.html" %}
+
+{% block html %}
+<head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Posted</title>
+</head>
+<body>
+    <p>You just posted {{ posted_data_placeholder }}</p>
+    <p>Your evaluated data is {{ evaluated_data_placeholder }}</p>
+    <form action="/posted_data" method="get">
+        <button type="submit">See posted data</button>
+    </form>
+</body>
+{% endblock %}

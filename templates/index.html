@@ -1,16 +1,18 @@
 {% extends "layout.html" %}
 
 {% block html %}
-    <head>
-        <meta name="viewport" content="initial-scale=1, width=device-width">
-        <title>Home page</title>
-    </head>
-    <body>
-        <h1>Hello</h1>
-        <p>This is Tadas programing webpage!!!</p>
-        <form action="/posted_data" method="get">
-            <input  name="data" type="text" size="30" placeholder="Data">
-            <button type="submit">Post data</button>
-        </form>
-    </body>
+<head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <title>Home page</title>
+</head>
+<body min-height: 100%>
+    <h1>Hello</h1>
+    <p>This is Tadas programing webpage!!!</p>
+    <form action="/post_data" method="get">
+        <button type="submit">Go to solve functions</button>
+    </form>
+    <form action="/posted_data" method="get">
+        <button type="submit">Go to see posted data</button>
+    </form>
+</body>
 {% endblock %}
