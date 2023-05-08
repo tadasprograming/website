@@ -1,9 +1,7 @@
-from cs50 import SQL
+mylist = [' '*i + ',' + ' '*n for i in range(10) for n in range(10)]
 
-solved_functions_db = SQL("sqlite:///solved_functions.db")
+'''for i in range(10):
+    for n in range(10):
+        mylist.append(' '*i+','+' '*n)'''
 
-posted_data = solved_functions_db.execute(
-    "SELECT * FROM solved_functions"
-)
-
-print(posted_data)
+print(mylist)

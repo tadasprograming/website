@@ -27,7 +27,8 @@ def get_arguments(args_string):
         return '#ERROR: missing arguments in function'
 
     patterns = [
-        r', ',                 # ', '
+        r' *, *',                 # ', '
+        #r',',
         r'[+-]?\d*\.?\d+',     # any integer or float, could have + or - sign
         r'\b(true|false)\b',   # true or false
         r'\b(True|False)\b',   # True or False
@@ -47,7 +48,8 @@ def get_arguments(args_string):
             # P.S. match checks only beggining of the string
             arg = patterns[i].match(args_string).group()
             args_string = args_string.replace(arg, '', 1)
-            if arg != ', ':
+            if not arg in \
+                [' '*i + ',' + ' '*n for i in range(10) for n in range(10)]:
                 args_list.append(arg)
             i = 0
         except AttributeError:
