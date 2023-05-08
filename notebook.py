@@ -1,7 +1,8 @@
-mylist = [' '*i + ',' + ' '*n for i in range(10) for n in range(10)]
+from scrape_app import scrape
 
-'''for i in range(10):
-    for n in range(10):
-        mylist.append(' '*i+','+' '*n)'''
+url = "https://rekvizitai.vz.lt/imone/maxima_lt_uab/"
 
-print(mylist)
+dic = scrape.find_info(scrape.scrape(url))
+
+for info in dic:
+    print(info, dic[info])

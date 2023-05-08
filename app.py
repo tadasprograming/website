@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request
 from spreadsheet_evaluator_app import spreadsheet_evaluator
 from cs50 import SQL
+from scrape_app import scrape
 
 app = Flask(__name__)
 
@@ -40,6 +41,15 @@ def remove_data():
             "SELECT * FROM solved_functions"
         )
         return render_template("posted_data.html", posted_data_placeholder=posted_data)
+
+@app.route("/scrape", methods=["GET", "POST"])
+def scrape_page():
+    if request.method == "GET":
+        return render_template("scrape.html")
+    if request.method == "POST":
+        url = request.form.get("scrape_url")
+        scraped_info = scrape.find_info(scrape.scrape(url))
+        return render_template("scrape.html", scraped_info_placeholder=scraped_info)
 
 
 #if __name__ == "__main__":

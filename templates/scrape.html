@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block html %}
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Scrape</title>
+    </head>
+    <body>
+        <h1>Scrape</h1>
+        <p>Nukopijuokite nuorodą iš <a href="https://rekvizitai.vz.lt/">Rekvizitai.vz.lt</a> duomenų paieškai:</p>
+        <p>Pvz: https://rekvizitai.vz.lt/imone/lindyhop_lt_klubas/</p>
+        <form action="/scrape" method="post">
+            <input  name="scrape_url" type="text" size="30" placeholder="Rekvizitų nuoroda">
+            <button type="submit">Scrape</button>
+        </form>
+    </body>
+    <table>
+        <tbody>
+            {% for info in scraped_info_placeholder %}
+                <tr>
+                    <td>{{ info }}</td>
+                    <td>{{ scraped_info_placeholder[info] }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
