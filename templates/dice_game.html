@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block html %}
+    <head>
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <title>Dice Game</title>
+    </head>
+    <body>
+        <h1>Welcome to Dice Game</h1>
+        <p>Please enter dice_amount, sides, throws</p>
+        <form action="/dice_game" method="post">
+            <input  name="game_info" type="text" size="30" placeholder="dice_amount, sides, throws">
+            <button type="submit">Play!</button>
+        </form>
+    </body>
+    <table>
+        <tbody>
+            {% for item in results_placeholder %}
+                <tr>
+                    <td>{{ item }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

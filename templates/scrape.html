@@ -6,9 +6,11 @@
         <title>Scrape</title>
     </head>
     <body>
-        <h1>Scrape</h1>
+        <h1>Scrape(Under development)</h1>
         <p>Nukopijuokite nuorodą iš <a href="https://rekvizitai.vz.lt/">Rekvizitai.vz.lt</a> duomenų paieškai:</p>
         <p>Pvz: https://rekvizitai.vz.lt/imone/lindyhop_lt_klubas/</p>
+        <p>Duomenys iš {{ url_ph }}</p>
+        <p>{{ soup_ph }}</p>
         <form action="/scrape" method="post">
             <input  name="scrape_url" type="text" size="30" placeholder="Rekvizitų nuoroda">
             <button type="submit">Scrape</button>

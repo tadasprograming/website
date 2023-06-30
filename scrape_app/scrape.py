@@ -1,16 +1,13 @@
-import sys
-sys.path.append(r'C:\Users\tadas\anaconda3\Lib\site-packages')
 import requests
-from bs4 import BeautifulSoup
+import bs4
 
 #url = "https://rekvizitai.vz.lt/imone/maxima_lt_uab/"
 
 def scrape(url):
-    try:
-        res = requests.get(url)
-        return BeautifulSoup(res.text,'lxml')
-    except:
-        return '#ERROR: Nepavyko nuskaityti nuorodos!'
+    res = requests.get(url)
+    return bs4.BeautifulSoup(res.text,'lxml')
+    '''except:
+        return '#ERROR: Nepavyko nuskaityti nuorodos!'''
 
 def find_info(soup):
     try:

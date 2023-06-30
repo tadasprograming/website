@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from spreadsheet_evaluator_app import spreadsheet_evaluator
 from cs50 import SQL
 from scrape_app import scrape
+from dice_app import dice_app
 
 app = Flask(__name__)
 
@@ -48,8 +49,24 @@ def scrape_page():
         return render_template("scrape.html")
     if request.method == "POST":
         url = request.form.get("scrape_url")
-        scraped_info = scrape.find_info(scrape.scrape(url))
-        return render_template("scrape.html", scraped_info_placeholder=scraped_info)
+        soup = scrape.scrape(url)
+        scraped_info = scrape.find_info(soup)
+        return render_template("scrape.html", scraped_info_placeholder=scraped_info,\
+                                url_ph=url, soup_ph=soup)
+
+game = dice_app.Game()
+dice = dice_app.Dice()    
+@app.route("/dice_game", methods=["GET", "POST"])
+def dice_game_page():
+    if request.method == "GET":
+        return render_template("dice_game.html")
+    if request.method == "POST":
+        game_info = request.form.get("game_info")
+        game.dice_amount, dice.sides, throws = map(int, game_info.split(', '))
+        game.play(throws, dice.sides)
+        results = game.throws_history
+        results.reverse()        
+        return render_template("dice_game.html", results_placeholder=results)
 
 
 #if __name__ == "__main__":
