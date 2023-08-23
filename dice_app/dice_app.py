@@ -1,6 +1,5 @@
-from collections import deque, defaultdict
+from collections import deque
 import random
-from array import array
 
 
 class Dice:
@@ -36,26 +35,26 @@ class Game:
         self._dice_amount = value
     
     def play(self, throws, sides):
-        throws_results = []
         for _ in range(throws):
             throw_result = [random.randint(1, sides) for _ in range(self._dice_amount)]
-            throws_results.append(throw_result)
+            print(throw_result)
             self.throws_history.append((sides, throw_result))
-        return throws_results
     
             
 def collect_users_input():
-    dice_amount = int(input('How many dices you want to throw?'))
-    sides = int(input('Pick number of sides for dice:'))
+    #input check
+    dice_amount = int(input('How many dices you want to throw? '))
+    #input check
+    sides = int(input('Pick number of sides for dice: '))
     throws = int(input('Choose how many times you want to throw dice and'\
-                           'start the game!'))
+                           ' start the game! '))
     return dice_amount, sides, throws
 
 def collect_next_action():
     next_action = ''
     while next_action not in ["p", "e", "s"]:
         next_action = input('Type "p" - play again, "e" - end game'\
-                            ' , "s" - see throws history')
+                            ' , "s" - see throws history: ')
     return next_action
 
 
@@ -66,11 +65,10 @@ if __name__ == '__main__':
     game_on = True
     while game_on:
         game.dice_amount, dice.sides, throws = collect_users_input()
-        for item in game.play(throws, dice.sides):
-            print(item)
+        game.play(throws, dice.sides)
         next_action = collect_next_action()
         while next_action == 's':
-            [print(item) for item in list(game.throws_history)]
+            [print(item) for item in game.throws_history]
             next_action = collect_next_action()
         if next_action == 'e':
             game_on = False
